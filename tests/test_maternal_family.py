@@ -111,6 +111,17 @@ def test_find_path():
           None, tree.find_path("Zed"))
 
 
+def test_count_members():
+    check("count members of the sample family (normal)",
+          5, build_test_family().count_members())
+    check("count members of an empty tree (edge)",
+          0, MaternalFamilyTree().count_members())
+    tree = MaternalFamilyTree()
+    tree.set_matriarch("Rosa", 78)
+    check("count members of a matriarch-only tree (edge)",
+          1, tree.count_members())
+
+
 def run_all_tests():
     results.clear()
     test_set_matriarch()
@@ -121,6 +132,7 @@ def run_all_tests():
     test_find_person()
     test_find_person_iterative()
     test_find_path()
+    test_count_members()
     print(f"{sum(results)} / {len(results)} tests passed")
 
 
