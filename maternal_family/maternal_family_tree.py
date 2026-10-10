@@ -58,3 +58,17 @@ class MaternalFamilyTree:
         for child in person.children:
             names += self._preorder(child)
         return names
+
+    def postorder(self):
+        """Recursively return names in children-then-person order."""
+        return self._postorder(self.matriarch)
+
+    def _postorder(self, person):
+        if person is None:
+            return []
+
+        names = []
+        for child in person.children:
+            names += self._postorder(child)
+        names.append(person.name)
+        return names
