@@ -136,3 +136,16 @@ class MaternalFamilyTree:
         for child in person.children:
             count += self._count_members(child)
         return count
+
+    def height(self):
+        """Recursively count edges on the longest matriarch-to-descendant path; empty tree returns -1."""
+        return self._height(self.matriarch)
+
+    def _height(self, person):
+        if person is None:
+            return -1
+
+        tallest_child = -1
+        for child in person.children:
+            tallest_child = max(tallest_child, self._height(child))
+        return 1 + tallest_child
