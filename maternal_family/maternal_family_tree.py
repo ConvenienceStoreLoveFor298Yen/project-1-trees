@@ -105,3 +105,21 @@ class MaternalFamilyTree:
                 stack.append(child)
 
         return None
+
+    def find_path(self, name):
+        """Recursively return matriarch-to-person names, or None if not found."""
+        return self._find_path(self.matriarch, name)
+
+    def _find_path(self, person, name):
+        if person is None:
+            return None
+
+        if person.name == name:
+            return [person.name]
+
+        for child in person.children:
+            child_path = self._find_path(child, name)
+            if child_path is not None:
+                return [person.name] + child_path
+
+        return None
