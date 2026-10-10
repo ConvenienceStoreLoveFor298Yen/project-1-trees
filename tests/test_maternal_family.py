@@ -49,9 +49,19 @@ def test_set_matriarch():
           "Matriarch already exists.", error_message(lambda: tree.set_matriarch("Ana", 52)))
 
 
+def test_add_child():
+    tree = build_test_family()
+    check("children of Rosa in the sample family (normal)",
+          ["Ana", "Luis"], [child.name for child in tree.get_matriarch().children])
+    check("add a second child named Ana under Rosa (failure)",
+          "Rosa already has a child named Ana.",
+          error_message(lambda: tree.add_child(tree.get_matriarch(), "Ana", 50)))
+
+
 def run_all_tests():
     results.clear()
     test_set_matriarch()
+    test_add_child()
     print(f"{sum(results)} / {len(results)} tests passed")
 
 
