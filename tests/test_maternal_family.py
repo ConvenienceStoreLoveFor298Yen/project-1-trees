@@ -122,6 +122,17 @@ def test_count_members():
           1, tree.count_members())
 
 
+def test_height():
+    check("height of the sample family (normal)",
+          3, build_test_family().height())
+    check("height of an empty tree (edge)",
+          -1, MaternalFamilyTree().height())
+    tree = MaternalFamilyTree()
+    tree.set_matriarch("Rosa", 78)
+    check("height of a matriarch-only tree (edge)",
+          0, tree.height())
+
+
 def run_all_tests():
     results.clear()
     test_set_matriarch()
@@ -133,6 +144,7 @@ def run_all_tests():
     test_find_person_iterative()
     test_find_path()
     test_count_members()
+    test_height()
     print(f"{sum(results)} / {len(results)} tests passed")
 
 
