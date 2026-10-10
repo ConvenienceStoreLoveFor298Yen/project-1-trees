@@ -90,3 +90,18 @@ class MaternalFamilyTree:
                 return found
 
         return None
+
+    def find_person_iterative(self, name):
+        """Iteratively search using a stack; same result as find_person."""
+        if self.matriarch is None:
+            return None
+
+        stack = [self.matriarch]
+        while stack:
+            person = stack.pop()
+            if person.name == name:
+                return person
+            for child in person.children:
+                stack.append(child)
+
+        return None
