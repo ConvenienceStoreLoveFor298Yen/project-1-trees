@@ -83,6 +83,16 @@ def test_postorder():
           [], MaternalFamilyTree().postorder())
 
 
+def test_find_person():
+    tree = build_test_family()
+    check("find Leo, 4 generations deep, recursive (normal)",
+          "Leo", name_or_none(tree.find_person("Leo")))
+    check("search an empty tree, recursive (edge)",
+          None, MaternalFamilyTree().find_person("Rosa"))
+    check("search for Zed, who is not in the tree, recursive (failure)",
+          None, tree.find_person("Zed"))
+
+
 def run_all_tests():
     results.clear()
     test_set_matriarch()
@@ -90,6 +100,7 @@ def run_all_tests():
     test_display()
     test_preorder()
     test_postorder()
+    test_find_person()
     print(f"{sum(results)} / {len(results)} tests passed")
 
 
