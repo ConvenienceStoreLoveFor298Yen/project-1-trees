@@ -93,6 +93,16 @@ def test_find_person():
           None, tree.find_person("Zed"))
 
 
+def test_find_person_iterative():
+    tree = build_test_family()
+    check("find Leo, 4 generations deep, iterative (normal)",
+          "Leo", name_or_none(tree.find_person_iterative("Leo")))
+    check("search an empty tree, iterative (edge)",
+          None, MaternalFamilyTree().find_person_iterative("Rosa"))
+    check("search for Zed, who is not in the tree, iterative (failure)",
+          None, tree.find_person_iterative("Zed"))
+
+
 def run_all_tests():
     results.clear()
     test_set_matriarch()
@@ -101,6 +111,7 @@ def run_all_tests():
     test_preorder()
     test_postorder()
     test_find_person()
+    test_find_person_iterative()
     print(f"{sum(results)} / {len(results)} tests passed")
 
 
