@@ -72,3 +72,21 @@ class MaternalFamilyTree:
             names += self._postorder(child)
         names.append(person.name)
         return names
+
+    def find_person(self, name):
+        """Recursively search (pre-order) for a person by name; return the node or None."""
+        return self._find_person(self.matriarch, name)
+
+    def _find_person(self, person, name):
+        if person is None:
+            return None
+
+        if person.name == name:
+            return person
+
+        for child in person.children:
+            found = self._find_person(child, name)
+            if found is not None:
+                return found
+
+        return None
