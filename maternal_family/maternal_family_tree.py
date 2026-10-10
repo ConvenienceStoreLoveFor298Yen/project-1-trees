@@ -45,3 +45,16 @@ class MaternalFamilyTree:
         for child in person.children:
             lines += self._display(child, depth + 1)
         return lines
+
+    def preorder(self):
+        """Recursively return names in person-then-children order."""
+        return self._preorder(self.matriarch)
+
+    def _preorder(self, person):
+        if person is None:
+            return []
+
+        names = [person.name]
+        for child in person.children:
+            names += self._preorder(child)
+        return names
