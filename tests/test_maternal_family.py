@@ -103,6 +103,14 @@ def test_find_person_iterative():
           None, tree.find_person_iterative("Zed"))
 
 
+def test_find_path():
+    tree = build_test_family()
+    check("path from the matriarch to Leo (normal)",
+          ["Rosa", "Ana", "Mia", "Leo"], tree.find_path("Leo"))
+    check("path to Zed, who is not in the tree (failure)",
+          None, tree.find_path("Zed"))
+
+
 def run_all_tests():
     results.clear()
     test_set_matriarch()
@@ -112,6 +120,7 @@ def run_all_tests():
     test_postorder()
     test_find_person()
     test_find_person_iterative()
+    test_find_path()
     print(f"{sum(results)} / {len(results)} tests passed")
 
 
