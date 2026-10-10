@@ -123,3 +123,16 @@ class MaternalFamilyTree:
                 return [person.name] + child_path
 
         return None
+
+    def count_members(self):
+        """Recursively count every person; empty tree returns 0."""
+        return self._count_members(self.matriarch)
+
+    def _count_members(self, person):
+        if person is None:
+            return 0
+
+        count = 1
+        for child in person.children:
+            count += self._count_members(child)
+        return count
