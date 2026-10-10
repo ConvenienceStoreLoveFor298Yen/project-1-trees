@@ -58,10 +58,20 @@ def test_add_child():
           error_message(lambda: tree.add_child(tree.get_matriarch(), "Ana", 50)))
 
 
+def test_display():
+    tree = build_test_family()
+    check("display the sample family (normal)",
+          ["Rosa (78)", "    Ana (52)", "        Mia (24)", "            Leo (2)", "    Luis (49)"],
+          tree.display())
+    check("display an empty tree (edge)",
+          [], MaternalFamilyTree().display())
+
+
 def run_all_tests():
     results.clear()
     test_set_matriarch()
     test_add_child()
+    test_display()
     print(f"{sum(results)} / {len(results)} tests passed")
 
 
