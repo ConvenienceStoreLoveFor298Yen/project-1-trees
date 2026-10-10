@@ -75,12 +75,21 @@ def test_preorder():
           [], MaternalFamilyTree().preorder())
 
 
+def test_postorder():
+    tree = build_test_family()
+    check("postorder of the sample family (normal)",
+          ["Leo", "Mia", "Ana", "Luis", "Rosa"], tree.postorder())
+    check("postorder of an empty tree (edge)",
+          [], MaternalFamilyTree().postorder())
+
+
 def run_all_tests():
     results.clear()
     test_set_matriarch()
     test_add_child()
     test_display()
     test_preorder()
+    test_postorder()
     print(f"{sum(results)} / {len(results)} tests passed")
 
 
