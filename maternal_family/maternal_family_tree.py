@@ -18,3 +18,13 @@ class MaternalFamilyTree:
     def get_matriarch(self):
         """Return the matriarch node, or None."""
         return self.matriarch
+
+    def add_child(self, parent, name, age, spouse=None):
+        """Create and return a child of parent; raise ValueError if parent already has a child with that name."""
+        for child in parent.children:
+            if child.name == name:
+                raise ValueError(f"{parent.name} already has a child named {name}.")
+
+        child = PersonNode(name, age, spouse)
+        parent.children.append(child)
+        return child
