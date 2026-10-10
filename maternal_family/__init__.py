@@ -1,1 +1,1 @@
-"""Maternal family package: person nodes, traversals, and tree operations."""
+"""Maternal family package: the person node and the family tree."""
