@@ -28,3 +28,20 @@ class MaternalFamilyTree:
         child = PersonNode(name, age, spouse)
         parent.children.append(child)
         return child
+
+    def display(self):
+        """Recursively return one line per person, indented by generation."""
+        return self._display(self.matriarch, 0)
+
+    def _display(self, person, depth):
+        if person is None:
+            return []
+
+        line = "    " * depth + f"{person.name} ({person.age})"
+        if person.spouse is not None:
+            line += f" + {person.spouse}"
+
+        lines = [line]
+        for child in person.children:
+            lines += self._display(child, depth + 1)
+        return lines
