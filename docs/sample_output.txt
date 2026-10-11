@@ -1,0 +1,148 @@
+Maternal family tree:
+Rosa (78) + Ed
+    Ana (52) + Carlos
+        Mia (24)
+            Leo (2)
+        Sam (19)
+    Luis (49) + Grace
+        Eva (15)
+    Clara (45)
+
+Traversals:
+Preorder:  ['Rosa', 'Ana', 'Mia', 'Leo', 'Sam', 'Luis', 'Eva', 'Clara']
+Postorder: ['Leo', 'Mia', 'Sam', 'Ana', 'Eva', 'Luis', 'Clara', 'Rosa']
+
+Operations:
+Members: 8
+Tree Height (generations below the matriarch): 3
+Path to Leo: ['Rosa', 'Ana', 'Mia', 'Leo']
+Find Eva (recursive): Eva
+Find Eva (iterative): Eva
+
+Tests:
+TEST 1: get the matriarch of a new tree (edge)
+  Expected: None
+  Actual:   None
+  Result:   PASS
+
+TEST 2: set and get the matriarch (normal)
+  Expected: Rosa
+  Actual:   Rosa
+  Result:   PASS
+
+TEST 3: set a second matriarch (failure)
+  Expected: Matriarch already exists.
+  Actual:   Matriarch already exists.
+  Result:   PASS
+
+TEST 4: children of Rosa in the sample family (normal)
+  Expected: ['Ana', 'Luis']
+  Actual:   ['Ana', 'Luis']
+  Result:   PASS
+
+TEST 5: add a second child named Ana under Rosa (failure)
+  Expected: Rosa already has a child named Ana.
+  Actual:   Rosa already has a child named Ana.
+  Result:   PASS
+
+TEST 6: display the sample family (normal)
+  Expected: ['Rosa (78)', '    Ana (52)', '        Mia (24)', '            Leo (2)', '    Luis (49)']
+  Actual:   ['Rosa (78)', '    Ana (52)', '        Mia (24)', '            Leo (2)', '    Luis (49)']
+  Result:   PASS
+
+TEST 7: display an empty tree (edge)
+  Expected: []
+  Actual:   []
+  Result:   PASS
+
+TEST 8: preorder of the sample family (normal)
+  Expected: ['Rosa', 'Ana', 'Mia', 'Leo', 'Luis']
+  Actual:   ['Rosa', 'Ana', 'Mia', 'Leo', 'Luis']
+  Result:   PASS
+
+TEST 9: preorder of an empty tree (edge)
+  Expected: []
+  Actual:   []
+  Result:   PASS
+
+TEST 10: postorder of the sample family (normal)
+  Expected: ['Leo', 'Mia', 'Ana', 'Luis', 'Rosa']
+  Actual:   ['Leo', 'Mia', 'Ana', 'Luis', 'Rosa']
+  Result:   PASS
+
+TEST 11: postorder of an empty tree (edge)
+  Expected: []
+  Actual:   []
+  Result:   PASS
+
+TEST 12: find Leo, 4 generations deep, recursive (normal)
+  Expected: Leo
+  Actual:   Leo
+  Result:   PASS
+
+TEST 13: search an empty tree, recursive (edge)
+  Expected: None
+  Actual:   None
+  Result:   PASS
+
+TEST 14: search for Zed, who is not in the tree, recursive (failure)
+  Expected: None
+  Actual:   None
+  Result:   PASS
+
+TEST 15: find Leo, 4 generations deep, iterative (normal)
+  Expected: Leo
+  Actual:   Leo
+  Result:   PASS
+
+TEST 16: search an empty tree, iterative (edge)
+  Expected: None
+  Actual:   None
+  Result:   PASS
+
+TEST 17: search for Zed, who is not in the tree, iterative (failure)
+  Expected: None
+  Actual:   None
+  Result:   PASS
+
+TEST 18: path from the matriarch to Leo (normal)
+  Expected: ['Rosa', 'Ana', 'Mia', 'Leo']
+  Actual:   ['Rosa', 'Ana', 'Mia', 'Leo']
+  Result:   PASS
+
+TEST 19: path to Zed, who is not in the tree (failure)
+  Expected: None
+  Actual:   None
+  Result:   PASS
+
+TEST 20: count members of the sample family (normal)
+  Expected: 5
+  Actual:   5
+  Result:   PASS
+
+TEST 21: count members of an empty tree (edge)
+  Expected: 0
+  Actual:   0
+  Result:   PASS
+
+TEST 22: count members of a matriarch-only tree (edge)
+  Expected: 1
+  Actual:   1
+  Result:   PASS
+
+TEST 23: height of the sample family (normal)
+  Expected: 3
+  Actual:   3
+  Result:   PASS
+
+TEST 24: height of an empty tree (edge)
+  Expected: -1
+  Actual:   -1
+  Result:   PASS
+
+TEST 25: height of a matriarch-only tree (edge)
+  Expected: 0
+  Actual:   0
+  Result:   PASS
+
+25 / 25 tests passed
